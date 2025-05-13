@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> GPS Locator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="Recent-gps-locator.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>GPS Locator</h1>
+        <p id="status">Click below to get your current location.</p>
+        <button class="btn" onclick="getLocation()">Get Location</button>
+        
+        <div class="spinner" id="loading" style="display: none;"></div>
+
+        <div id="location" class="status"></div>
+
+        <!-- Map Container -->
+        <div id="map"></div>
+    </div>
+
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+
+    <script src="recent-delete-gps-location.js"></script>
+
+</body>
+</html>

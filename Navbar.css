@@ -1,0 +1,106 @@
+/* Navbar */
+nav {
+  background-color: #1f1f1f;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-wrapper {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.brand-logo {
+  font-size: 1.8rem;
+  color: #e0e0e0;
+  font-weight: 600;
+}
+
+.nav-wrapper a {
+  color: #e0e0e0;
+}
+
+.nav-wrapper a:hover {
+  color: #ffffff;
+}
+
+.nav-wrapper ul li a {
+  color: #e0e0e0;
+  font-size: 1.2rem;
+}
+
+.nav-wrapper ul li a:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Mobile Menu */
+.sidenav {
+  background-color: #1e1e1e;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 240px;
+  z-index: 999;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.sidenav .profile {
+  padding: 20px;
+  border-bottom: 1px solid #333;
+  text-align: center;
+}
+
+.sidenav .profile img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+}
+
+.sidenav .profile h6 {
+  margin: 0;
+  color: #fff;
+}
+
+.sidenav li > a {
+  color: #e0e0e0;
+}
+
+.sidenav li > a:hover {
+  background-color: #333;
+}
+
+/* Logout Button */
+.btn-logout {
+  margin-top: auto;
+  background-color: #d32f2f;
+  width: 100%;
+}
+
+.btn-logout:hover {
+  background-color: #b71c1c;
+}
+
+.sidenav .nav-link {
+  display: block;
+  padding: 12px 20px;
+  font-size: 1.2rem;
+  color: #e0e0e0;
+}
+
+.sidenav .nav-link:hover {
+  background-color: #333;
+  color: #fff;
+
+/* Mobile sidenav */
+.sidenav-trigger {
+  color: #e0e0e0;
+}
+
+}

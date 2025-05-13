@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Deleted Messages</title>
+</head>
+<body>
+     <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restore Deleted Messages</title>
+  <!-- Materialize CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Roboto', sans-serif;
+    }
+    .section {
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .btn-restore {
+      background-color: #2e7d32;
+    }
+    .btn-restore:hover {
+      background-color: #1b5e20;
+    }
+    .message {
+      background-color: #333;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .message i {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Active Messages -->
+    <div id="active-messages" class="section">
+      <h4>Active Messages</h4>
+      <div class="message">
+        <span>Message 1: Important update!</span>
+        <i class="material-icons" onclick="deleteMessage(0)">delete</i>
+      </div>
+      <div class="message">
+        <span>Message 2: Security notification</span>
+        <i class="material-icons" onclick="deleteMessage(1)">delete</i>
+      </div>
+      <div class="message">
+        <span>Message 3: Welcome to SecureBank</span>
+        <i class="material-icons" onclick="deleteMessage(2)">delete</i>
+      </div>
+    </div>
+
+    <!-- Deleted Messages -->
+    <div id="deleted-messages" class="section">
+      <h4>Deleted Messages</h4>
+      <div class="message" id="deleted-msg-0" style="display:none;">
+        <span>Message 1: Important update!</span>
+        <i class="material-icons" onclick="restoreMessage(0)">restore</i>
+      </div>
+      <div class="message" id="deleted-msg-1" style="display:none;">
+        <span>Message 2: Security notification</span>
+        <i class="material-icons" onclick="restoreMessage(1)">restore</i>
+      </div>
+      <div class="message" id="deleted-msg-2" style="display:none;">
+        <span>Message 3: Welcome to SecureBank</span>
+        <i class="material-icons" onclick="restoreMessage(2)">restore</i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    // Simulate deleting a message
+    const activeMessages = [
+      "Message 1: Important update!",
+      "Message 2: Security notification",
+      "Message 3: Welcome to SecureBank"
+    ];
+
+    const deletedMessages = [];
+
+    function deleteMessage(index) {
+      // Move message to the deleted messages section
+      const messageText = activeMessages[index];
+      activeMessages.splice(index, 1); // Remove from active messages
+      deletedMessages.push(messageText); // Add to deleted messages
+
+      // Update the UI
+      document.querySelector(`#deleted-msg-${index}`).style.display = 'block'; // Show the deleted message
+      renderMessages();
+    }
+
+    function restoreMessage(index) {
+      // Restore the deleted message back to active messages
+      const messageText = deletedMessages[index];
+      deletedMessages.splice(index, 1); // Remove from deleted messages
+      activeMessages.push(messageText); // Add back to active messages
+
+      // Hide the restored message in deleted section and update UI
+      document.querySelector(`#deleted-msg-${index}`).style.display = 'none';
+      renderMessages();
+    }
+
+    // Render Active Messages
+    function renderMessages() {
+      const activeMessagesContainer = document.getElementById('active-messages');
+      const deletedMessagesContainer = document.getElementById('deleted-messages');
+
+      // Clear current displayed messages
+      activeMessagesContainer.innerHTML = '<h4>Active Messages</h4>';
+      deletedMessagesContainer.innerHTML = '<h4>Deleted Messages</h4>';
+
+      // Show Active Messages
+      activeMessages.forEach((msg, index) => {
+        const messageElem = document.createElement('div');
+        messageElem.className = 'message';
+        messageElem.innerHTML = `
+          <span>${msg}</span>
+          <i class="material-icons" onclick="deleteMessage(${index})">delete</i>
+        `;
+        activeMessagesContainer.appendChild(messageElem);
+      });
+
+      // Show Deleted Messages
+      deletedMessages.forEach((msg, index) => {
+        const messageElem = document.createElement('div');
+        messageElem.className = 'message';
+        messageElem.id = `deleted-msg-${index}`;
+        messageElem.style.display = 'none'; // Initially hidden
+        messageElem.innerHTML = `
+          <span>${msg}</span>
+          <i class="material-icons" onclick="restoreMessage(${index})">restore</i>
+        `;
+        deletedMessagesContainer.appendChild(messageElem);
+      });
+    }
+
+    // Initial render of messages
+    renderMessages();
+  </script>
+</body>
+</html>
+
+</body>
+</html>
