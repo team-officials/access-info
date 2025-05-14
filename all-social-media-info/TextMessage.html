@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Deleted Messages - SecureBank</title>
+
+  <!-- Materialize CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet"/>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .section {
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .message {
+      background-color: #333;
+      padding: 15px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .message i {
+      cursor: pointer;
+    }
+
+    nav {
+      background-color: #1c1c1c;
+    }
+
+    .btn-restore {
+      background-color: #2e7d32;
+    }
+
+    .btn-restore:hover {
+      background-color: #1b5e20;
+    }
+
+    .error-box {
+      background-color: #d32f2f;
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-wrapper container">
+      <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/all-social-media-info/home/Home.html">Home</a></li>
+        <li><a href="/all-social-media-info/TextMessage.html">Messages</a></li>
+        <li><a href="/all-social-media-info/CallLogs.html">Call Logs</a></li>
+        <li><a href="/all-social-media-info/recent-delete-gps-location/Recent-Gps-locator.html">GPS</a></li>
+        <li><a class="btn red">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Sidenav -->
+  <ul class="sidenav" id="mobile-menu">
+    <li><a href="/all-social-media-info/home/Home.html"><i class="material-icons">home</i>Home</a></li>
+    <li><a href="/all-social-media-info/TextMessage.html"><i class="material-icons">message</i>Messages</a></li>
+    <li><a href="/all-social-media-info/AllSocialMediaMessages.html"><i class="material-icons">message</i>Social Messages</a></li>
+    <li><a href="/all-social-media-info/CallLogs.html"><i class="material-icons">call</i>Call Logs</a></li>
+    <li><a href="/all-social-media-info/recent-delete-gps-location/Recent-Gps-locator.html"><i class="material-icons">location_on</i>GPS</a></li>
+    <li><a href="#"><i class="material-icons red-text">logout</i>Logout</a></li>
+  </ul>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Active Messages Section -->
+    <div id="active-messages" class="section">
+      <h4>Active Messages</h4>
+      <div class="message">
+        <span>Message 1: Important Message! <p style="color: #d32f2f;"> 562</p></span>
+        <i class="material-icons" onclick="deleteMessage(0)">delete</i>
+      </div>
+      <div class="message">
+        <span>Message 2: Deleted  Messages <p style="color: #d32f2f;"> 962</p></span>
+        <i class="material-icons" onclick="deleteMessage(1)">delete</i>
+      </div>
+      <div class="message">
+        <span>Message 3: Current Text Messages <p style="color: #d32f2f;"> 262</p></span>
+        <i class="material-icons" onclick="deleteMessage(2)">delete</i>
+      </div>
+    </div>
+
+    <!-- Deleted Messages Section -->
+    <div id="deleted-messages" class="section">
+      <h4>Deleted Messages</h4>
+      <div class="error-box">
+        <i class="material-icons left">error_outline</i>
+        Error: Unable to retrieve deleted messages. Backup file is missing.
+      </div>
+      <div class="center-align">
+        <a class="btn grey darken-2 disabled">
+          <i class="material-icons left">cloud_off</i>
+          Restore from Backup (Unavailable)
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    M.Sidenav.init(document.querySelectorAll(".sidenav"));
+
+    function deleteMessage(index) {
+      const messages = document.querySelectorAll('#active-messages .message');
+      if (messages[index]) {
+        messages[index].style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

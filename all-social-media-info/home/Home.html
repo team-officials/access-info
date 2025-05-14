@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SecureBank - Dark Theme</title>
+
+  <!-- Materialize CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="Navbar.css" />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body {
+      background-color: black;
+      color: red;
+      font-family: monospace;
+      margin: 0;
+    }
+
+    main.container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .loader {
+      border: 4px solid #444;
+      border-top: 4px solid white;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .message {
+      max-width: 90%;
+    }
+
+    .profile {
+      text-align: center;
+      padding: 16px;
+    }
+
+    .profile img {
+      border-radius: 50%;
+    }
+
+    .logout-btn {
+      text-align: center;
+      padding: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-wrapper container">
+      <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+      <div class="nav-right hide-on-med-and-down">
+        <ul class="nav-links">
+          <li><a href="/all-social-media-info/AllSocialMediaMessages.html">ALL SOCIAL MEDIA MESSAGES AND EMAIL MESSAGES</a></li>
+          <li><a href="/all-social-media-info/recent-delete-gps-location/Recent-Gps-locator.html">RECENT AND CURRENT GPS LOCATOR</a></li>
+          <li><a href="/all-social-media-info//DeletedMessage.html">TEXT MESSAGES AND DELETED MESSAGES</a></li>
+          <li><a href="/all-social-media-info/CallLogs.html">CALL LOGS</a></li>
+        </ul>
+        <a class="btn logout-btn-large">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sidebar / Sidenav -->
+  <ul class="sidenav" id="mobile-menu">
+    <div class="profile">
+      <!-- <img src="https://i.pravatar.cc/150?img=3" alt="User Profile" /> -->
+      <h6 style="color: blueviolet;">Nicki Info</h6>
+    </div>
+    <li><a href="/index.html"><i class="material-icons">home</i>Home</a></li>
+    <li><a href="/all-social-media-info/DeletedMessage.html"><i class="material-icons">message</i>Text Message</a></li>
+    <li><a href="/all-social-media-info/AllSocialMediaMessages.html"><i class="material-icons">mail</i>Social Messages</a></li>
+    <li><a href="/all-social-media-info/CallLogs.html"><i class="material-icons">call</i>Call Logs</a></li>
+    <li><a href="/all-social-media-info/recent-delete-gps-location/Recent-Gps-locator.html"><i class="material-icons">gps_fixed</i>Current GPS locator</a></li>
+    <li><a href="#settings"><i class="material-icons">settings</i>Settings</a></li>
+    <div class="logout-btn">
+      <a class="btn btn-logout waves-effect waves-light"><i class="material-icons left">logout</i>Logout</a>
+    </div>
+  </ul>
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="loader"></div>
+    <div class="message">
+      <p><strong>Access Restricted</strong></p>
+      <p>You need a backup file to access info.<br />Please get a backup file.</p>
+    </div>
+  </main>
+
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    M.Sidenav.init(document.querySelectorAll(".sidenav"));
+  </script>
+
+</body>
+</html>

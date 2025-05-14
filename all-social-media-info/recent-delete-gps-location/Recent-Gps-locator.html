@@ -1,31 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> GPS Locator</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="Recent-gps-locator.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Current GPS Locator</title>
+
+  <!-- Materialize CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet"/>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: monospace;
+    }
+
+    nav {
+      background-color: black;
+    }
+
+    .section {
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    #map {
+      height: 80vh;
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .error-box {
+      background-color: #d32f2f;
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 30px;
+      display: none;
+    }
+
+    .sidenav .profile {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .sidenav .profile img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+
+    .logout-btn {
+      padding: 20px;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>GPS Locator</h1>
-        <p id="status">Click below to get your current location.</p>
-        <button class="btn" onclick="getLocation()">Get Location</button>
-        
-        <div class="spinner" id="loading" style="display: none;"></div>
-
-        <div id="location" class="status"></div>
-
-        <!-- Map Container -->
-        <div id="map"></div>
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-wrapper container">
+      <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+      <div class="nav-right hide-on-med-and-down">
+        <ul class="nav-links">
+          <li><a href="../AllSocialMediaMessages.html">ALL SOCIAL MEDIA MESSAGES AND EMAIL MESSAGES</a></li>
+          <li><a href="/all-social-media-info/recent-delete-gps-location/Recent-Gps-locator.html">RECENT AND CURRENT GPS LOCATOR</a></li>
+          <li><a href="../DeletedMessage.html">TEXT MESSAGES AND DELETED MESSAGES.</a></li>
+          <li><a href="#settings">CALL LOGS</a></li>
+        </ul>
+        <a class="btn logout-btn-large">Logout</a>
+      </div>
     </div>
+  </nav>
 
-    <!-- Google Maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+  <!-- Sidenav -->
+  <ul class="sidenav" id="mobile-menu">
+    <div class="profile">
+      <!-- <img src="https://i.pravatar.cc/150?img=3" alt="User Profile" /> -->
+      <h6 style="color: blueviolet">Nicki Info</h6>
+    </div>
+    <li><a href="/HomeFile.html"><i class="material-icons">home</i>Home</a></li>
+    <li><a href="/all-social-media-info/DeletedMessage.html"><i class="material-icons">message</i>Text Message</a></li>
+    <li><a href="/"><i class="material-icons">mail</i>Deleted Messages</a></li>
+    <li><a href="all-social-media-info/DeletedMessage.html"><i class="material-icons">call</i>Call Logs</a></li>
+    <li><a href="all-social-media-info/DeletedMessage.html"><i class="material-icons">location_on</i>Current GPS locator</a></li>
+    <li><a href="#settings"><i class="material-icons">settings</i>Settings</a></li>
+    <div class="logout-btn">
+      <a class="btn btn-logout waves-effect waves-light"><i class="material-icons left">logout</i>Logout</a>
+    </div>
+  </ul>
 
-    <script src="recent-delete-gps-location.js"></script>
+  <!-- Main Content -->
+  <div class="container section">
+    <h4 class="center-align green-text text-accent-3">
+      <i class="material-icons">gps_fixed</i> Live GPS Tracker
+    </h4>
+    <div id="map"></div>
+    <div id="backup-error" class="error-box">
+      <i class="material-icons left">error_outline</i>
+      Cannot access location data. <strong>Backup file required.</strong>
+    </div>
+  </div>
 
+  <!-- JS Scripts -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    M.Sidenav.init(document.querySelectorAll(".sidenav"));
+
+    // UK-based starting point
+    let lat = 51.5074; // London latitude
+    let lng = -0.1278; // London longitude
+
+    const map = L.map('map').setView([lat, lng], 15);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 18,
+    }).addTo(map);
+
+    const marker = L.marker([lat, lng]).addTo(map).bindPopup("Tracking...").openPopup();
+
+    // Simulate tracking movement
+    const interval = setInterval(() => {
+      lat += (Math.random() - 0.5) * 0.001;
+      lng += (Math.random() - 0.5) * 0.001;
+      marker.setLatLng([lat, lng]);
+      map.setView([lat, lng]);
+    }, 1500);
+
+    // Show error after 10 seconds
+    setTimeout(() => {
+      clearInterval(interval);
+      document.getElementById('backup-error').style.display = 'block';
+    }, 10000);
+  </script>
 </body>
 </html>

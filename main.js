@@ -30,19 +30,25 @@ function validateForm() {
     passwordError.textContent = "Password is required.";
     password.classList.add("error");
     valid = false;
-  } else if (password.value.length < 6) {
-    passwordError.textContent = "Password must be at least 6 characters.";
+  } else if (password.value !== "WRQ1211AS") {
+    passwordError.textContent = "Incorrect password.";
     password.classList.add("error");
     valid = false;
   }
 
   if (valid) {
-    alert("Login successful!");
-    // Perform login logic here
+    window.location.href = "Home.html"; // Navigate to home.html
   }
 
-  return false; // Prevent form submit for demo
+  return false; // Prevent actual form submission
 }
+
+// Helper function to validate email format
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}
+
 
 function validateEmail(email) {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Call Log Info</title>
+
+  <!-- Materialize CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    nav {
+      background-color: black;
+    }
+
+    .section {
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .call-log {
+      background-color: #333;
+      padding: 10px;
+      margin-bottom: 5px;
+      border-radius: 4px;
+    }
+
+    .error-box {
+      background-color: #d32f2f;
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    .loader {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .sidenav .profile {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .sidenav .profile img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+
+    .logout-btn {
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-wrapper container">
+      <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+      <div class="nav-right hide-on-med-and-down">
+        <ul class="nav-links">
+          <li><a href="AllSocialMediaMessages.html">ALL SOCIAL MEDIA MESSAGES AND EMAIL MESSAGES</a></li>
+          <li><a href="all-social-media-info/recent-delete-gps-location/Recent-Gps-locator.html">RECENT AND CURRENT GPS LOCATOR</a></li>
+          <li><a href="#messages">TEXT MESSAGES AND DELETED MESSAGES.</a></li>
+          <li><a href="#settings">CALL LOGS</a></li>
+        </ul>
+        <a class="btn logout-btn-large">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sidenav -->
+  <ul class="sidenav" id="mobile-menu">
+    <div class="profile">
+      <img src="https://i.pravatar.cc/150?img=3" alt="User Profile" />
+      <h6 class="" style="color: blueviolet">Nicki Info</h6>
+    </div>
+    <li><a href="all-social-media-info/home/Home.html"><i class="material-icons">home</i>Home</a></li>
+    <li><a href="#messages"><i class="material-icons">message</i>Text Message</a></li>
+    <li><a href="all-social-media-info/DeletedMessage.html"><i class="material-icons">mail</i>Deleted Messages</a></li>
+    <li><a href="all-social-media-info/DeletedMessage.html"><i class="material-icons">call</i>Call Logs</a></li>
+    <li><a href="all-social-media-info/DeletedMessage.html"><i class="material-icons">location_on</i>Current GPS locator</a></li>
+    <li><a href="#settings"><i class="material-icons">settings</i>Settings</a></li>
+    <div class="logout-btn">
+      <a class="btn btn-logout waves-effect waves-light"><i class="material-icons left">logout</i>Logout</a>
+    </div>
+  </ul>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="section">
+      <h4>Fetching Call Logs from +44 08988878</h4>
+      <div class="loader">
+        <div class="preloader-wrapper active">
+          <div class="spinner-layer spinner-red-only">
+            <div class="circle-clipper left"><div class="circle"></div></div>
+            <div class="gap-patch"><div class="circle"></div></div>
+            <div class="circle-clipper right"><div class="circle"></div></div>
+          </div>
+        </div>
+      </div>
+      <div id="call-logs" class="hidden">
+        <div class="call-log">+44 7700 900123</div>
+        <div class="call-log">+44 7720 123456</div>
+        <div class="call-log">+44 7899 888765</div>
+        <div class="call-log">+44 7450 665432</div>
+        <div class="call-log">+44 7900 111222</div>
+        <div class="call-log">+44 7555 333444</div>
+        <div class="call-log">+44 7878 567890</div>
+        <div class="call-log">+44 7300 998877</div>
+      </div>
+      <div id="backup-error" class="error-box hidden">
+        <i class="material-icons left">error_outline</i>
+        Cannot access call logs. <strong>Backup file required.</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    M.Sidenav.init(document.querySelectorAll(".sidenav"));
+
+    // Simulate fetch and transition
+    setTimeout(() => {
+      document.querySelector('.loader').classList.add('hidden');
+      const logs = document.getElementById('call-logs');
+      logs.classList.remove('hidden');
+
+      // Show call logs briefly for 1 second, then hide and show error
+      setTimeout(() => {
+        logs.classList.add('hidden');
+        document.getElementById('backup-error').classList.remove('hidden');
+      }, 1000); // 1 second display of numbers
+    }, 2000); // 2 second loading delay
+  </script>
+</body>
+</html>

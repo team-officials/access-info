@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Social Media Messages - SecureBank</title>
+
+  <!-- Materialize CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: monospace;
+    }
+
+    nav {
+      background-color: black;
+    }
+
+    .brand-logo {
+      padding-left: 15px;
+      font-size: 1.5rem;
+    }
+
+    .container {
+      margin-top: 40px;
+    }
+
+    .card {
+      background-color: #1e1e1e;
+      border: 1px solid #333;
+    }
+
+    .card-title {
+      color: #00e676;
+    }
+
+    .loading-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      margin: 0 2px;
+      border-radius: 50%;
+      background-color: #00e676;
+      animation: blink 1.4s infinite both;
+    }
+
+    .loading-dot:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .loading-dot:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes blink {
+      0%, 80%, 100% { opacity: 0; }
+      40% { opacity: 1; }
+    }
+
+    .error-msg {
+      color: #ff5252;
+      font-weight: bold;
+    }
+
+    .social-icon {
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+
+    .sidenav .profile {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .sidenav .profile img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+
+    .logout-btn {
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-wrapper container">
+      <a href="#!" class="brand-logo">Encrypted Info</a>
+      <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="DeletedMessage.html">Deleted Messages</a></li>
+        <li><a href="Recent-Gps-locator.html">GPS Locator</a></li>
+        <li><a href="#!">Text Messages</a></li>
+        <li><a href="#!">Call Logs</a></li>
+        <li><a class="btn red darken-2">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Sidenav -->
+  <ul class="sidenav" id="mobile-menu">
+    <div class="profile">
+      <img src="https://i.pravatar.cc/150?img=3" alt="User Profile" />
+      <h6 style="color: violet;">Nicki Info</h6>
+    </div>
+    <li><a href="home/HomeFile.html"><i class="material-icons">home</i>Home</a></li>
+    <li><a href="#!"><i class="material-icons">message</i>Text Message</a></li>
+    <li><a href="DeletedMessage.html"><i class="material-icons">mail</i>Deleted Messages</a></li>
+    <li><a href="#!"><i class="material-icons">call</i>Call Logs</a></li>
+    <li><a href="Recent-Gps-locator.html"><i class="material-icons">location_on</i>GPS Locator</a></li>
+    <li><a href="#!"><i class="material-icons">settings</i>Settings</a></li>
+    <div class="logout-btn">
+      <a class="btn red darken-2"><i class="material-icons left">logout</i>Logout</a>
+    </div>
+  </ul>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h4 class="center-align"><i class="material-icons">mail</i> All Social Media Messages</h4>
+
+    <div class="row">
+      <!-- Facebook -->
+      <div class="col s12 m6 l4" id="facebook-card">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" width="20" class="social-icon">
+              Facebook Messenger
+            </span>
+            <p>Fetching messages<span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span></p>
+            <p class="error-msg">Backup file needed to decrypt data.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WhatsApp -->
+      <div class="col s12 m6 l4" id="whatsapp-card">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" width="20" class="social-icon">
+              WhatsApp
+            </span>
+            <p>Syncing messages<span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span></p>
+            <p class="error-msg">Access denied. Backup required.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Instagram -->
+      <div class="col s12 m6 l4" id="instagram-card">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" width="20" class="social-icon">
+              Instagram DM
+            </span>
+            <p>Retrieving chats<span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span></p>
+            <p class="error-msg">Error: No backup file detected.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Twitter / X -->
+      <div class="col s12 m6 l4" id="x-card">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              <img src="https://cdn-icons-png.flaticon.com/512/5968/5968849.png" width="20" class="social-icon">
+              X (Twitter)
+            </span>
+            <p>Accessing DM archives<span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span></p>
+            <p class="error-msg">Missing required backup key file.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gmail -->
+      <div class="col s12 m6 l4" id="gmail-card">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" width="20" class="social-icon">
+              Gmail
+            </span>
+            <p>Scanning emails<span class="loading-dot"></span><span class="loading-dot"></span><span class="loading-dot"></span></p>
+            <p class="error-msg">Encrypted. Backup file missing.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    // Init sidenav
+    M.Sidenav.init(document.querySelectorAll(".sidenav"));
+  </script>
+</body>
+</html>
