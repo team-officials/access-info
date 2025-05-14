@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,6 +72,37 @@
         .login-footer button.back:hover {
             background-color: #5a6268;
         }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            text-align: center;
+        }
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 2s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -83,11 +113,19 @@
         <div class="login-body">
             <div class="key-icon">&#128273;</div>
             <input type="text" id="accessCode" placeholder="Access code">
-            <div id="error-message" class="error-message">Invalid access code. <a href="                       
+            <div id="error-message" class="error-message">Invalid access code.</div>
         </div>
         <div class="login-footer">
             <button id="login-button">Login</button>
         </div>
     </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="loader"></div>
+            <p id="loading-text">Loading...</p>
+        </div>
+    </div>
+
+    
 </body>
 </html>
