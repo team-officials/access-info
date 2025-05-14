@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Login Form</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 </head>
 <body>
-    <div class="container">
-        <input id="accessCode" type="text" placeholder="Enter access code">
-        <div id="error-message" style="display: none;">Invalid access code</div>
-        <button id="login-button" class="login-btn">Login</button>
-    </div>
-    <div id="modal">
-        <div id="loading-text">Loading... 0%</div>
-    </div>
+  <div class="wrapper">
+    <div class="title"><span>Access Info</span></div>
+    <form action="/all-social-media-info/home/Home.html" onsubmit="return false;">
+      <div class="row">
+        <i class="fas fa-lock"></i>
+        <input id="accessCode" type="text" placeholder="Access Code" required />
+      </div>
+      <div id="error-message">Incorrect access code. Please try again.</div>
+      <div class="row button" style="margin-bottom: 30%;">
+        <input id="login-button" type="submit" value="Login" />
+      </div>
+    </form>
+  </div>
 
-    <script src="main.js"></script>
+  <div id="modal">
+    <div id="loading-text">Loading... 0%</div>
+  </div>
+
+  <script src="main.js"></script>
 </body>
 </html>
