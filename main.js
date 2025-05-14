@@ -1,78 +1,38 @@
+const accessCodeInput = document.getElementById('accessCode');
+const errorMessage = document.getElementById('error-message');
+const loginButton = document.getElementById('login-button');
+const modal = document.getElementById('modal');
+const loadingText = document.getElementById('loading-text');
 
+loginButton.addEventListener('click', validateAccessCode);
 
-function validateForm() {
-  const email = document.getElementById("email");
-  const password = document.getElementById("password");
-  const emailError = document.getElementById("emailError");
-  const passwordError = document.getElementById("passwordError");
+function validateAccessCode() {
+  const accessCode = accessCodeInput.value.trim();
+  const correctAccessCode = 'WQU26638837GHTQFGS';
 
-  let valid = true;
+  if (accessCode === correctAccessCode) {
+    accessCodeInput.style.border = '1px solid green';
+    errorMessage.style.display = 'none';
+    loginButton.disabled = true;
+    modal.style.display = 'flex';
 
-  // Clear previous errors
-  email.classList.remove("error");
-  password.classList.remove("error");
-  emailError.textContent = "";
-  passwordError.textContent = "";
+    let loadingProgress = 0;
+    const loadingInterval = setInterval(() => {
+      loadingProgress += 4;
+      loadingText.innerText = `Loading... ${loadingProgress}%`;
 
-  // Email validation
-  if (!email.value.trim()) {
-    emailError.textContent = "Email is required.";
-    email.classList.add("error");
-    valid = false;
-  } else if (!validateEmail(email.value.trim())) {
-    emailError.textContent = "Enter a valid email address.";
-    email.classList.add("error");
-    valid = false;
+      if (loadingProgress >= 100) {
+        clearInterval(loadingInterval);
+        setTimeout(() => {
+          window.location.href = '/all-social-media-info/home/Home.html';
+        }, 1000);
+      }
+    }, 250);
+  } else {
+    accessCodeInput.style.border = '1px solid red';
+    errorMessage.style.display = 'block';
   }
-
-  // Password validation
-  if (!password.value.trim()) {
-    passwordError.textContent = "Password is required.";
-    password.classList.add("error");
-    valid = false;
-  } else if (password.value !== "WRQ1211AS") {
-    passwordError.textContent = "Incorrect password.";
-    password.classList.add("error");
-    valid = false;
-  }
-
-  if (valid) {
-    window.location.href = "Home.html"; // Navigate to home.html
-  }
-
-  return false; // Prevent actual form submission
 }
-
-// Helper function to validate email format
-function validateEmail(email) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email);
-}
-
-
-function validateEmail(email) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email);
-}
-
-function showError(inputElement, message) {
-  inputElement.classList.add("error");
-  const errorSpan = document.createElement("span");
-  errorSpan.classList.add("error-message");
-  errorSpan.innerText = message;
-  inputElement.parentNode.appendChild(errorSpan);
-}
-
-function clearErrors() {
-  const inputs = document.querySelectorAll(".form-control");
-  inputs.forEach(input => {
-    input.classList.remove("error");
-  });
-
-  const errors = document.querySelectorAll(".error-message");
-  errors.forEach(error => error.remove());
-}
-
 
 
   
