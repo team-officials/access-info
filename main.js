@@ -37,7 +37,7 @@ function validateForm() {
   }
 
   if (valid) {
-    window.location.href = "Home.html"; // Navigate to home.html
+    window.location.href = "../Home.html"; // Navigate to home.html
   }
 
   return false; // Prevent actual form submission
