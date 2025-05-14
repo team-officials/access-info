@@ -9,6 +9,7 @@
 
 body {
 <<<<<<< HEAD
+<<<<<<< HEAD
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
 }
@@ -69,6 +70,8 @@ body {
     color: #fff;
     font-size: 24px;
 =======
+=======
+>>>>>>> 47427c0e4798c8d7b8dde290868cb08a5226724b
   display: flex;
   align-items: center;
   justify-content: center;
@@ -177,5 +180,8 @@ form .button input:hover {
   justify-content: center;
   align-items: center;
   z-index: 999;
+<<<<<<< HEAD
 >>>>>>> 47427c0 (new updated)
+=======
+>>>>>>> 47427c0e4798c8d7b8dde290868cb08a5226724b
 }
